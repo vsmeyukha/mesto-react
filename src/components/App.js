@@ -17,23 +17,14 @@ function App() {
   // ! пишем функции изменения состояния переменных для открытия попапов с формой
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
-
-    console.log('открыт попап редактирования профиля');
-    console.log(`isEditProfilePopupOpen = ${isEditProfilePopupOpen}`);
   }
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
-
-    console.log('открыт попап редактирования аватара');
-    console.log(`isEditAvatarPopupOpen = ${isEditAvatarPopupOpen}`);
   }
 
   function handleAddPlaceClick() {
     setIsAddPlacePopupOpen(true);
-
-    console.log('открыт попап добавления карточки');
-    console.log(`isAddPlacePopupOpen = ${isAddPlacePopupOpen}`);
   }
 
   // ! создаем переменную состояния для открытия фотки
