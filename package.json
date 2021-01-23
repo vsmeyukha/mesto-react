@@ -2,6 +2,8 @@
   "name": "mesto-react",
   "version": "0.1.0",
   "private": true,
+  "author": "Victor Smeyukha",
+  "description": "Написанное на React SPA-приложение с функционалом добавления и удаления фотограыий с заголовками, постановки лайков и редактирования собственного профиля",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
