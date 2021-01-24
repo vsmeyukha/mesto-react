@@ -47,33 +47,96 @@ function App() {
     <div className="page">
       <div className="page__content">
         <Header />
-        <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick}/>
+        <Main
+          onEditProfile={handleEditProfileClick}
+          onAddPlace={handleAddPlaceClick}
+          onEditAvatar={handleEditAvatarClick}
+          onCardClick={handleCardClick}
+        />
         <Footer />
               
         {/* попап редактирования профиля */}
 
-        {isEditProfilePopupOpen && <PopupWithForm title="Как звать-то тебя?" name="user-info" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
-          <input type="text" className="popup__input popup__input_type_name" placeholder="Имя" name="user-name" required minLength="2" maxLength="40" id="user-name" />
-          <span className="popup__input-error" id="user-name-error"></span>
-          <input type="text" className="popup__input popup__input_type_regalia" placeholder="Род деятельности" name="user-regalia" required minLength="2" maxLength="200" id="user-regalia" />
-          <span className="popup__input-error" id="user-regalia-error"></span>
-        </PopupWithForm>}
+        {isEditProfilePopupOpen &&
+          <PopupWithForm
+            title="Как звать-то тебя?"
+            name="user-info"
+            isOpen={isEditProfilePopupOpen}
+            onClose={closeAllPopups}>
+              <input
+                type="text"
+                className="popup__input popup__input_type_name"
+                placeholder="Имя"
+                name="user-name"
+                required
+                minLength="2"
+                maxLength="40"
+                id="user-name"
+              />
+              <span className="popup__input-error" id="user-name-error"></span>
+              <input
+                type="text"
+                className="popup__input popup__input_type_regalia"
+                placeholder="Род деятельности"
+                name="user-regalia"
+                required
+                minLength="2"
+                maxLength="200"
+                id="user-regalia"
+              />
+              <span className="popup__input-error" id="user-regalia-error"></span>
+          </PopupWithForm>
+        }
 
         {/* попап редактирования аватара */}
 
-        {isEditAvatarPopupOpen && <PopupWithForm title="Изменить аватар" name="change-avatar" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} >
-          <input type="url" className="popup__input popup__input_type_avatar-link" placeholder="Ссылка на аву" name="avatar-link" required id="avatar-link" />
-          <span className="popup__input-error" id="avatar-link-error"></span>
-        </PopupWithForm>}
+        {isEditAvatarPopupOpen &&
+          <PopupWithForm
+            title="Изменить аватар"
+            name="change-avatar"
+            isOpen={isEditAvatarPopupOpen}
+            onClose={closeAllPopups} >
+              <input
+                type="url"
+                className="popup__input popup__input_type_avatar-link"
+                placeholder="Ссылка на аву"
+                name="avatar-link"
+                required
+                id="avatar-link"
+              />
+              <span className="popup__input-error" id="avatar-link-error"></span>
+          </PopupWithForm>
+        }
 
         {/* попап добавления новой карточки */}
 
-        {isAddPlacePopupOpen && <PopupWithForm title="Новое место" name="add-new-card" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
-          <input type="text" className="popup__input popup__input_type_card-title" placeholder="Название картинки" name="card-title" required maxLength="30" id="card-title" />
-          <span className="popup__input-error" id="card-title-error"></span>
-          <input type="url" className="popup__input popup__input_type_card-link" placeholder="Ссылка на картинку" name="card-link" required id="card-link" />
-          <span className="popup__input-error" id="card-link-error"></span>
-        </PopupWithForm>}
+        {isAddPlacePopupOpen &&
+          <PopupWithForm
+            title="Новое место"
+            name="add-new-card"
+            isOpen={isAddPlacePopupOpen}
+            onClose={closeAllPopups}>
+              <input
+                type="text"
+                className="popup__input popup__input_type_card-title"
+                placeholder="Название картинки"
+                name="card-title"
+                required
+                maxLength="30"
+                id="card-title"
+              />
+              <span className="popup__input-error" id="card-title-error"></span>
+              <input
+                type="url"
+                className="popup__input popup__input_type_card-link"
+                placeholder="Ссылка на картинку"
+                name="card-link"
+                required
+                id="card-link"
+              />
+              <span className="popup__input-error" id="card-link-error"></span>
+          </PopupWithForm>
+        }
 
         {/* попап подтверждения удаления. его оформим в виде компонента позже */}
         <div className="popup popup_type_submit">
@@ -87,7 +150,12 @@ function App() {
         </div>
 
         {/* попап с картинкой */}
-        {selectedCard && <PopupWithImage card={selectedCard} onClose={closeAllPopups} />}
+        {selectedCard &&
+          <PopupWithImage
+            card={selectedCard}
+            onClose={closeAllPopups}
+          />
+        }
 
       </div>
     </div>
