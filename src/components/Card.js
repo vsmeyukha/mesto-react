@@ -19,8 +19,11 @@ function Card(props) {
 
   return (
     <div className="card" >
-      <img src={props.card.link} alt="Бали" className="card__img" onClick={() => handleClick(props.card.link) } />
-      <button className={cardDeleteButtonClassName}></button>
+      <img
+        src={props.card.link}
+        alt={props.card.name}
+        className="card__img" onClick={() => handleClick(props.card.link)} />
+      <button className={cardDeleteButtonClassName} onClick={props.onCardDelete}></button>
       <div className="card__name">
         <h2 className="card__title">{props.card.name}</h2>
         <div className="card__like">

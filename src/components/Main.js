@@ -6,7 +6,11 @@ function Main(props) {
 
   return (
     <main className="main">
-      <Profile onEditProfile={props.onEditProfile} onAddPlace={props.onAddPlace} onEditAvatar={props.onEditAvatar} />
+      <Profile
+        onEditProfile={props.onEditProfile}
+        onAddPlace={props.onAddPlace}
+        onEditAvatar={props.onEditAvatar}
+      />
       <Cards onCardClick={props.onCardClick}/>
     </main>
   );
