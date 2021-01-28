@@ -132,6 +132,16 @@ class Api {
         }
       });
   }
+
+  changeLikeCardStatus(id, isLiked) {
+    if (isLiked) {
+      return this.addALike(id);
+    }
+    else {
+      return this.deleteLike(id);
+    }
+
+  }
 }
 
 const api = new Api('2dbd0122-ea43-4557-862d-f5c5a66a918e');

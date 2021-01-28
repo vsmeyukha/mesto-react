@@ -6,8 +6,20 @@ import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import PopupWithImage from './PopupWithImage';
+import api from '../utils/Api';
+import currentUserContext from '../contexts/CurrentUserContext';
 
 function App() {
+
+  const [currentUser, setCurrentUser] = React.useState({});
+
+  React.useEffect(() => {
+    api.getUserInfo()
+      .then(data => {
+        setCurrentUser(data);
+      })
+      .catch(err => console.error(`Ошибка при получении данных профиля: ${err}`))
+  }, []);
 
   // ! создаем переменные состояния для открытия попапов с формой
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
@@ -44,7 +56,8 @@ function App() {
   }
 
   return (
-    <div className="page">
+    <currentUserContext.Provider value={currentUser}>
+      <div className="page">
       <div className="page__content">
         <Header />
         <Main
@@ -158,7 +171,8 @@ function App() {
         }
 
       </div>
-    </div>
+      </div>
+      </currentUserContext.Provider>
   );
 }
 
