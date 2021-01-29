@@ -7,6 +7,7 @@ import currentUserContext from '../contexts/CurrentUserContext';
 
 function Profile(props) {
 
+  // ! Подписываем компонент Profile на контекст
   const { name, about, avatar } = React.useContext(currentUserContext);
 
   // ! создаем переменные состояния для имени пользователя, описания и аватара

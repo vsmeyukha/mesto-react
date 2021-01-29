@@ -3,6 +3,7 @@ import currentUserContext from '../contexts/CurrentUserContext';
 
 function Card(props) {
 
+  // ! подписываем компонент Card на контекст
   const { _id } = React.useContext(currentUserContext);
 
   const isOwn = props.card.owner._id === _id;
