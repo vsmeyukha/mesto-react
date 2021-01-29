@@ -56,6 +56,18 @@ function App() {
     setSelectedCard('');
   }
 
+  // ! функция обновления данных профиля
+  function handleUpdateUser(currentUser) {
+    api.editProfile(currentUser)
+      .then(data => {
+        setCurrentUser(data);
+      })
+      .catch(err => console.error(`Ошибка при редактировании данных профиля: ${err}`))
+      .finally(() => {
+        closeAllPopups();
+      })
+  }
+
   return (
     // ! оборачиваем все приложение в провайдер контекста
     <currentUserContext.Provider value={currentUser}>
@@ -75,6 +87,7 @@ function App() {
             <EditProfilePopup
               isOpen={isEditProfilePopupOpen}
               onClose={closeAllPopups}
+              onUpdateUser={handleUpdateUser}
             />
 
           {/* попап редактирования аватара */}

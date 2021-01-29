@@ -5,35 +5,47 @@ import currentUserContext from '../contexts/CurrentUserContext';
 function EditProfilePopup(props) {
 
   // ! объявляем стейт-переменные, которые будут привязаны к полям ввода формы и сделают их управляемыми
-  const [name, setName] = React.useState('');
+  const [username, setUsername] = React.useState('');
   const [description, setDescription] = React.useState('');
 
-  // ! подписываем компонент на контекст
-  const currentUser = React.useContext(currentUserContext);
-  console.log(currentUser);
-
-  // ! После загрузки текущего пользователя из API его данные будут использованы в управляемых компонентах.
+  const thisUser = React.useContext(currentUserContext);
+  console.log(thisUser);
+  
   React.useEffect(() => {
-    setName(currentUser.name);
-    setDescription(currentUser.about);
-  }, [currentUser]);
+    setUsername(thisUser.name);
+    setDescription(thisUser.about);
+  }, [thisUser]);
 
   // ! функция изменения значения инпута имени
-  function handleNameChange(e) {
-    setName(e.target.value);
+  function handleUsernameChange(e) {
+    setUsername(e.target.value);
   }
 
     // ! функция изменения значения инпута описания
   function handleDescriptionChange(e) {
     setDescription(e.target.value);
+    console.log(description);
+  }
+
+  // ! функция сабмита формы
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    // ! Передаём значения управляемых компонентов во внешний обработчик
+    props.onUpdateUser({
+      name: username,
+      about: description,
+    });
   }
 
   return (
     <PopupWithForm
-            title="Как звать-то тебя?"
-            name="user-info"
-            isOpen={props.isOpen}
-            onClose={props.onClose}>
+      title="Как звать-то тебя?"
+      name="user-info"
+      isOpen={props.isOpen}
+      onClose={props.onClose}
+      onSubmit={handleSubmit}
+    >
               <input
                 type="text"
                 className="popup__input popup__input_type_name"
@@ -43,8 +55,8 @@ function EditProfilePopup(props) {
                 minLength="2"
                 maxLength="40"
                 id="user-name"
-                value={name}
-                onChange={handleNameChange}
+                value={username}
+                onChange={handleUsernameChange}
               />
               <span className="popup__input-error" id="user-name-error"></span>
               <input
