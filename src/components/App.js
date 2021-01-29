@@ -8,6 +8,7 @@ import PopupWithForm from './PopupWithForm';
 import PopupWithImage from './PopupWithImage';
 import api from '../utils/Api';
 import currentUserContext from '../contexts/CurrentUserContext';
+import EditProfilePopup from './EditProfilePopup';
 
 function App() {
 
@@ -70,36 +71,7 @@ function App() {
               
         {/* попап редактирования профиля */}
 
-        {isEditProfilePopupOpen &&
-          <PopupWithForm
-            title="Как звать-то тебя?"
-            name="user-info"
-            isOpen={isEditProfilePopupOpen}
-            onClose={closeAllPopups}>
-              <input
-                type="text"
-                className="popup__input popup__input_type_name"
-                placeholder="Имя"
-                name="user-name"
-                required
-                minLength="2"
-                maxLength="40"
-                id="user-name"
-              />
-              <span className="popup__input-error" id="user-name-error"></span>
-              <input
-                type="text"
-                className="popup__input popup__input_type_regalia"
-                placeholder="Род деятельности"
-                name="user-regalia"
-                required
-                minLength="2"
-                maxLength="200"
-                id="user-regalia"
-              />
-              <span className="popup__input-error" id="user-regalia-error"></span>
-          </PopupWithForm>
-        }
+          <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
 
         {/* попап редактирования аватара */}
 
