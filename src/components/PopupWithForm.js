@@ -1,7 +1,6 @@
 import React from 'react';
 
 function PopupWithForm(props) {
-  // console.log(`props.isOpen = ${props.isOpen}`);
 
   return (
     <div className={

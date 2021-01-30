@@ -9,7 +9,6 @@ function EditProfilePopup(props) {
   const [description, setDescription] = React.useState('');
 
   const thisUser = React.useContext(currentUserContext);
-  console.log(thisUser);
   
   React.useEffect(() => {
     setUsername(thisUser.name);
@@ -24,7 +23,6 @@ function EditProfilePopup(props) {
     // ! функция изменения значения инпута описания
   function handleDescriptionChange(e) {
     setDescription(e.target.value);
-    console.log(description);
   }
 
   // ! функция сабмита формы

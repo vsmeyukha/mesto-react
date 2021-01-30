@@ -11,7 +11,12 @@ function Main(props) {
         onAddPlace={props.onAddPlace}
         onEditAvatar={props.onEditAvatar}
       />
-      <Cards onCardClick={props.onCardClick}/>
+      <Cards
+        onCardClick={props.onCardClick}
+        cards={props.cards}
+        onCardLike={props.onCardLike}
+        onCardDelete={props.onCardDelete}
+      />
     </main>
   );
 }

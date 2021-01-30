@@ -6,11 +6,24 @@ function EditAvatarPopup(props) {
 
   const [avatarLink, setAvatarLink] = React.useState('');
 
-  const avatarInputRef = React.useRef();
+  const avatarInputRef = React.useRef('');
+
+  const thisUser = React.useContext(currentUserContext);
+
+  React.useEffect(() => {
+    setAvatarLink(thisUser.avatar);
+  }, [thisUser]);
 
   function handleAvatarInputChange(e) {
     setAvatarLink(avatarInputRef.current.value);
-    console.log(avatarLink);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    props.onUpdateAvatar({
+      avatar: avatarLink
+    })
   }
 
   return (
@@ -19,6 +32,7 @@ function EditAvatarPopup(props) {
       name="change-avatar"
       isOpen={props.isOpen}
       onClose={props.onClose}
+      onSubmit={handleSubmit}
     >
       <input
         type="url"

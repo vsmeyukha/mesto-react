@@ -6,7 +6,7 @@ function PopupWithImage(props) {
       <figure className="photo-popup__container">
         <button className="popup__close-button popup__close-button_type_photo-popup" type="button" onClick={props.onClose}></button>
         <img src={props.card} alt="" className="photo-popup__image" />
-        <figcaption className="photo-popup__caption">London is the capital of Great Britain</figcaption>
+        <figcaption className="photo-popup__caption"></figcaption>
       </figure>
     </div>
   )

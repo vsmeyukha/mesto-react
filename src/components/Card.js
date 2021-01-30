@@ -5,7 +5,7 @@ function Card(props) {
 
   // ! подписываем компонент Card на контекст
   const { _id } = React.useContext(currentUserContext);
-
+  // debugger;
   const isOwn = props.card.owner._id === _id;
 
   const cardDeleteButtonClassName = (`card__delete-card ${isOwn ? '' : 'card__delete-card_invisible'}`);
@@ -19,7 +19,7 @@ function Card(props) {
   } 
 
   return (
-    <div className="card" >
+    <div className="card">
       <img
         src={props.card.link}
         alt={props.card.name}
