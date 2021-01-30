@@ -7,6 +7,7 @@ import PopupWithImage from './PopupWithImage';
 import api from '../utils/Api';
 import currentUserContext from '../contexts/CurrentUserContext';
 import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
 
 function App() {
 
@@ -92,26 +93,7 @@ function App() {
 
           {/* попап редактирования аватара */}
 
-          {isEditAvatarPopupOpen &&
-            <PopupWithForm
-              title="Изменить аватар"
-              name="change-avatar"
-              isOpen={isEditAvatarPopupOpen}
-              onClose={closeAllPopups} >
-                <input
-                  type="url"
-                  className="popup__input popup__input_type_avatar-link"
-                  placeholder="Ссылка на аву"
-                  name="avatar-link"
-                  required
-                  id="avatar-link"
-                />
-                <span
-                  className="popup__input-error"
-                  id="avatar-link-error">
-                </span>
-            </PopupWithForm>
-          }
+          <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} />
 
           {/* попап добавления новой карточки */}
 
