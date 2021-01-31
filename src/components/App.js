@@ -89,11 +89,11 @@ function App() {
   }
 
   // ! создаем переменную состояния для открытия фотки
-  const [selectedCard, setSelectedCard] = React.useState('');
+  const [selectedCard, setSelectedCard] = React.useState(null);
 
   // ! пишем функцию изменения состояния переменной для открытия попапа с фото
-  function handleCardClick(link) {
-    setSelectedCard(link);
+  function handleCardClick(card) {
+    setSelectedCard(card);
   }
 
   // ! пишем функцию закрытия попапа
@@ -101,7 +101,7 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
     setIsAddPlacePopupOpen(false);
-    setSelectedCard('');
+    setSelectedCard(null);
   }
 
   // ! функция обновления данных профиля
