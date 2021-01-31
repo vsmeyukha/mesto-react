@@ -4,25 +4,25 @@ import currentUserContext from '../contexts/CurrentUserContext';
 
 function EditAvatarPopup(props) {
 
-  const [avatarLink, setAvatarLink] = React.useState('');
+  // const [avatarLink, setAvatarLink] = React.useState('');
 
   const avatarInputRef = React.useRef('');
 
-  const thisUser = React.useContext(currentUserContext);
+  // const thisUser = React.useContext(currentUserContext);
 
-  React.useEffect(() => {
-    setAvatarLink(thisUser.avatar);
-  }, [thisUser]);
+  // React.useEffect(() => {
+  //   setAvatarLink(thisUser.avatar);
+  // }, [thisUser]);
 
-  function handleAvatarInputChange(e) {
-    setAvatarLink(avatarInputRef.current.value);
-  }
+  // function handleAvatarInputChange(e) {
+  //   setAvatarLink(avatarInputRef.current.value);
+  // }
 
   function handleSubmit(e) {
     e.preventDefault();
 
     props.onUpdateAvatar({
-      avatar: avatarLink
+      avatar: avatarInputRef.current.value
     })
   }
 
@@ -42,7 +42,7 @@ function EditAvatarPopup(props) {
         required
         id="avatar-link"
         ref={avatarInputRef}
-        onChange={handleAvatarInputChange}
+
       />
       <span
         className="popup__input-error"
