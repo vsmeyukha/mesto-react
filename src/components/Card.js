@@ -29,7 +29,7 @@ function Card(props) {
         <h2 className="card__title">{props.card.name}</h2>
         <div className="card__like">
           <button className={cardLikeButtonClassName} onClick={props.onLikeClick}></button>
-          <p className="card__like-scope">0</p>
+          <p className="card__like-scope">{props.card.likes.length}</p>
         </div>
       </div>
     </div>
