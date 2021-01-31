@@ -1,10 +1,7 @@
 import React from 'react';
 import Card from './Card';
-import currentUserContext from '../contexts/CurrentUserContext';
 
 function Cards(props) {
-
-  const { _id } = React.useContext(currentUserContext);
 
   return (
     <section className="cards" >

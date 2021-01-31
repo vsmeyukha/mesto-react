@@ -109,34 +109,27 @@ function App() {
     api.editProfile(currentUser)
       .then(data => {
         setCurrentUser(data);
-      })
-      .catch(err => console.error(`Ошибка при редактировании данных профиля: ${err}`))
-      .finally(() => {
         closeAllPopups();
       })
+      .catch(err => console.error(`Ошибка при редактировании данных профиля: ${err}`));
   }
 
   function handleUpdateAvatar(currentUser) {
     api.changeAvatar(currentUser)
       .then(data => {
         setCurrentUser(data);
-      })
-      .catch(err => console.error(`Ошибка при редактировании аватара: ${err}`))
-      .finally(() => {
         closeAllPopups();
       })
-    
+      .catch(err => console.error(`Ошибка при редактировании аватара: ${err}`));
   }
 
   function handleAddPlaceSubmit(card) {
     api.addNewCard(card)
       .then(data => {
-        setCards([data, ...cards])
-      })
-      .catch(err => console.error(`Ошибка при добавлении изображения: ${err}`))
-      .finally(() => {
+        setCards([data, ...cards]);
         closeAllPopups();
       })
+      .catch(err => console.error(`Ошибка при добавлении изображения: ${err}`));
   }
 
   return (
