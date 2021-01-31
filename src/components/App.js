@@ -64,9 +64,10 @@ function App() {
             if (c._id !== card._id) {
               return c;
             }
-          });
+          })
           setCards(cardsWithoutACard);
         })
+        .catch(err => console.error(`Ошибка удаления карточки: ${err}`))
     }
 
   // ! создаем переменные состояния для открытия попапов с формой
