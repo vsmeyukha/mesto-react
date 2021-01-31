@@ -64,7 +64,7 @@ class Api {
         }
       });
   }
-  // ! test
+  
   getAllNeededData() {
     return Promise.all([this.getUserInfo(), this.getInitialCards()]);
   }

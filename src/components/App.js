@@ -2,7 +2,6 @@ import React from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-import PopupWithForm from './PopupWithForm';
 import PopupWithImage from './PopupWithImage';
 import api from '../utils/Api';
 import currentUserContext from '../contexts/CurrentUserContext';
@@ -54,7 +53,8 @@ function App() {
           const newCards = cards.map((c) => c._id === card._id ? newCard : c);
         // Обновляем стейт
           setCards(newCards);
-        });
+        })
+        .catch(err => console.error(`Ошибка добавления лайка: ${err}`))
     }
   
     function handleCardDelete(card) {
