@@ -10,23 +10,6 @@ function Profile(props) {
   // ! Подписываем компонент Profile на контекст
   const { name, about, avatar } = React.useContext(currentUserContext);
 
-  // ! создаем переменные состояния для имени пользователя, описания и аватара
-  // const [userName, setUserName] = React.useState('Кусто');
-  // const [userRegalia, setUserRegalia] = React.useState('кусто кусто кусто');
-  // const [userAvatar, setUserAvatar] = React.useState(cousteau);
-
-  // // ! прописываем первичную загрузку данных пользователя
-  // React.useEffect(() => {
-  //   api.getUserInfo()
-  //     .then(data => {
-  //       setUserName(data.name);
-  //       setUserRegalia(data.about);
-  //       setUserAvatar(data.avatar);
-  //     })
-  //     .catch(err => console.error(`Ошибка при редактировании профиля: ${err}`))
-  // });
-
-
   return (
     <section className="profile">
 

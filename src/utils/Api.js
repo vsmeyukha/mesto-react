@@ -1,68 +1,40 @@
 class Api {
-  constructor(apiKey) {
+  constructor(apiKey, baseUrl) {
     this.headers = {
       authorization: apiKey
-    }
+    };
+    this.baseUrl = baseUrl
+  }
+
+  _getResponseData(url, method, headers, body) {
+    return fetch(url, {
+      method: method,
+      headers: headers,
+      body: body
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();  
+        } else {
+          return Promise.reject();
+        }
+      });
   }
 
   getInitialCards() {
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-18/cards', {
-      method: 'GET',
-      headers: this.headers
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          return Promise.reject();
-        }
-      });
+    return this._getResponseData(`${this.baseUrl}/cards`, 'GET', this.headers);
   }
 
   addNewCard(obj) {
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-18/cards', {
-      method: 'POST',
-      headers: {
-        ...this.headers,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(obj)
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          return Promise.reject();
-      }
-    })
+    return this._getResponseData(`${this.baseUrl}/cards`, 'POST', { ...this.headers, 'Content-Type': 'application/json' }, JSON.stringify(obj));
   }
 
   deleteCard(id) {
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-18/cards/${id}`, {
-      method: 'DELETE',
-      headers: this.headers
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          return Promise.reject();
-        }
-      });
+    return this._getResponseData(`${this.baseUrl}/cards/${id}`, 'DELETE', this.headers);
   }
 
   getUserInfo() {
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-18/users/me', {
-      method: 'GET',
-      headers: this.headers
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          return Promise.reject();
-        }
-      });
+    return this._getResponseData(`${this.baseUrl}/users/me`, 'GET', this.headers);
   }
   
   getAllNeededData() {
@@ -70,67 +42,19 @@ class Api {
   }
 
   editProfile(obj) {
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-18/users/me', {
-      method: 'PATCH',
-      headers: {
-        ...this.headers,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(obj)
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          return Promise.reject();
-        }
-      });
+    return this._getResponseData(`${this.baseUrl}/users/me`, 'PATCH', { ...this.headers, 'Content-Type': 'application/json' }, JSON.stringify(obj));
   }
 
   changeAvatar(obj) {
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-18/users/me/avatar', {
-      method: 'PATCH',
-      headers: {
-        ...this.headers,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(obj)
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          return Promise.reject();
-        }
-      });
+    return this._getResponseData(`${this.baseUrl}/users/me/avatar`, 'PATCH', { ...this.headers, 'Content-Type': 'application/json' }, JSON.stringify(obj));
   }
 
   addALike(id) {
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-18/cards/likes/${id}`, {
-      method: 'PUT',
-      headers: this.headers
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          return Promise.reject();
-        }
-      });
+    return this._getResponseData(`${this.baseUrl}/cards/likes/${id}`, 'PUT', this.headers);
   }
 
   deleteLike(id) {
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-18/cards/likes/${id}`, {
-      method: 'DELETE',
-      headers: this.headers
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          return Promise.reject();
-        }
-      });
+    return this._getResponseData(`${this.baseUrl}/cards/likes/${id}`, 'DELETE', this.headers);
   }
 
   changeLikeCardStatus(id, isLiked) {
@@ -144,5 +68,5 @@ class Api {
   }
 }
 
-const api = new Api('2dbd0122-ea43-4557-862d-f5c5a66a918e');
+const api = new Api('2dbd0122-ea43-4557-862d-f5c5a66a918e', 'https://mesto.nomoreparties.co/v1/cohort-18');
 export default api;
